@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= recipe.owner.username %>'s Recipe</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= recipe.owner.username %>'s Recipe:  <%= recipe.name %></h1>
+    <h3>Instructions: <%= recipe.instructions %></h3>
+    <ul>Ingredients:
+        <% recipe.ingredients.forEach(ingredient => { %>
+            <li>One Ingredient</li>
+        <% }) %>
+    </ul>
+    <br><br>
+
+    <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
+    <br><br>
+    <form action="recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+</body>
+</html>
